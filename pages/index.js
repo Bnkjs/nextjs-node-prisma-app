@@ -4,13 +4,13 @@ import { PrismaClient } from '@prisma/client'
 import { v4 as uuidv4 } from "uuid"
 import react,{useState, useEffect} from 'react'
 import { SaveOneContact, UrlFetch } from '../src/utils/FormContactFunction'
-import { Form } from '../src/components/form/ AddUserContactForm'
+import { Form } from '../src/components/form/AddUserContactForm'
 export default function Home({contacts}){
   const [savedContactData, setSavedContactData] = useState({})
   const [contactInput, setContactInput] = useState({})
 
  console.log(contactInput);
- 
+
   async function saveOneContact (e){
     e.preventDefault()
     let myHeaders = new Headers();
