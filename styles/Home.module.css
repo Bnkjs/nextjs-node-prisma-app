@@ -5,7 +5,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: auto;
+  background-color: plum;
+  color: yellow;
+  font-family: sans-serif;
+  font-size: 1.1em;
 }
 
 .main {
