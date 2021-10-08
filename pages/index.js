@@ -1,8 +1,8 @@
 import styles from '../styles/Home.module.css'
-import { Card } from '../src/card/card'
+import { Card } from '../src/components/card/card'
 import { PrismaClient } from '@prisma/client'
 import { v4 as uuidv4 } from "uuid"
-import { Form } from '../src/form/ AddUserContactForm'
+import { Form } from '../src/components/form/ AddUserContactForm'
 export default function Home({contacts}){
 
   console.log(contacts);
