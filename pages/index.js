@@ -6,14 +6,13 @@ import react,{useState, useEffect} from 'react'
 import { SaveOneContact, UrlFetch } from '../src/utils/FormContactFunction'
 import { Form } from '../src/components/form/AddUserContactForm'
 export default function Home({contacts}){
-  const [savedContactData, setSavedContactData] = useState({})
+  const [savedContactData, setSavedContactData] = useState(contacts)
   const [contactInput, setContactInput] = useState({})
-
- console.log(contactInput);
 
   async function saveOneContact (e){
     e.preventDefault()
-    let myHeaders = new Headers();
+    setSavedContactData([...savedContactData,contactInput]);
+
     const response = await fetch(`${UrlFetch}`,{
       method: "POST",
       headers: {
@@ -21,9 +20,10 @@ export default function Home({contacts}){
       },
       body: JSON.stringify(contactInput)
     })
+
     return await response.json()
   }
-
+  console.log(savedContactData);
   return (
     <div className={styles.container}>
       <Form 
@@ -34,7 +34,7 @@ export default function Home({contacts}){
       onChangePP={(e)=>{setContactInput({...contactInput, PP: e.target.value})}}
       />
       {
-        contacts.map((c)=>{
+        savedContactData.map((c)=>{
           return <Card key={uuidv4()} name={c.name} email={c.email} />
         })
       }
